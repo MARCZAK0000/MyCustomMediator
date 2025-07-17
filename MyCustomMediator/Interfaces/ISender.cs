@@ -9,9 +9,8 @@
         /// <param name="request">The request to be sent to the Mediator. Cannot be null.</param>
         /// <param name="token">A cancellation token that can be used to cancel the operation.</param>
         /// <returns>A task representing the asynchronous operation. The task result contains the response from the Mediator.</returns>
-        Task<TResponse> SendToMediatoR<TRequest, TResponse>(TRequest request,
-            CancellationToken token) 
-            where TResponse : class
-            where TRequest : IRequest<TResponse>;
+        Task<TResponse> SendToMediatoR<TResponse>(IRequest<TResponse> request,
+            CancellationToken token)
+            where TResponse : class;
     }
 }

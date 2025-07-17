@@ -1,5 +1,4 @@
 ﻿using MyCustomMediator.Deleagate;
-using static MyCustomMediator.Classes.Sender;
 
 namespace MyCustomMediator.Interfaces
 {

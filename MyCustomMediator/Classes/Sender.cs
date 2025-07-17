@@ -12,8 +12,7 @@ namespace MyCustomMediator.Classes
             _serviceProvider = serviceProvider;
         }
 
-        public Task<TResponse> SendToMediatoR<TRequest, TResponse>(TRequest request, CancellationToken token)
-            where TRequest : IRequest<TResponse>
+        public Task<TResponse> SendToMediatoR<TResponse>(IRequest<TResponse> request, CancellationToken token)
             where TResponse : class
         {
             Type handlerType = typeof(IRequestHandler<,>)
@@ -21,7 +20,7 @@ namespace MyCustomMediator.Classes
             
             dynamic handler = _serviceProvider.GetRequiredService(handlerType); //Get required service from the service provider
 
-            var pipelines = _serviceProvider.GetServices<IPipeline<TRequest, TResponse>>(); //Get all pipeline requests
+            var pipelines = _serviceProvider.GetServices<IPipeline<IRequest<TResponse>, TResponse>>(); //Get all pipeline requests
 
             if(pipelines == null || !pipelines.Any()) //Check if there are no pipelines
             {
