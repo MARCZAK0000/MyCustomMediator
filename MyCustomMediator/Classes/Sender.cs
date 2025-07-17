@@ -21,7 +21,7 @@ namespace MyCustomMediator.Classes
             
             dynamic handler = _serviceProvider.GetRequiredService(handlerType); //Get required service from the service provider
 
-            var pipelines = _serviceProvider.GetServices<IPipelineRequest<TRequest, TResponse>>(); //Get all pipeline requests
+            var pipelines = _serviceProvider.GetServices<IPipeline<TRequest, TResponse>>(); //Get all pipeline requests
 
             if(pipelines == null || !pipelines.Any()) //Check if there are no pipelines
             {
