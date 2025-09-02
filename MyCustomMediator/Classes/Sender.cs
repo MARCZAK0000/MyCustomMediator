@@ -26,7 +26,7 @@ namespace MyCustomMediator.Classes
             {
                 return await handler.Handle((dynamic)request, token); // Return the response directly from the handler if no pipelines are present
             }
-            RequestHandlerDelegate<TResponse> handlerDelegate = async () => await handler.Handle(request, token); //Get the handle method from the handler
+            RequestHandlerDelegate<TResponse> handlerDelegate = async () => await handler.Handle((dynamic)request, token); //Get the handle method from the handler
 
             foreach (var pipe in pipelines) // Iterate through each pipeline request
             {
